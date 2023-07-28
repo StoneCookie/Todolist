@@ -1,0 +1,10 @@
+:root {
+	--background-app: #0B1416;
+	--background-component: #2c4950;
+	--background-component-item: #31798f;
+	--color-text: #DEDFDF;
+	--color-delete: #b40000;
+	--background-button: #FBC47C;
+	--component-gap: .7rem;
+	--border-radius: 1rem;
+}

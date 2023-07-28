@@ -1,0 +1,187 @@
+body {
+	background-color: var(--background-app);
+}
+
+#root {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	max-width: 1200px;
+	padding: 1rem;
+	gap: var(--component-gap);
+}
+
+/* Header */
+
+.header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 2rem;
+	padding: 1rem;
+	border-radius: var(--border-radius);
+	background-color: var(--background-component);
+}
+
+.header__item {
+	padding: .2rem .8rem;
+	color: var(--color-text);
+}
+
+.header__item.active {
+	background-color: var(--background-component-item);
+	border-radius: var(--border-radius);
+}
+
+/* Content */
+
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: var(--component-gap);
+}
+
+/* Create item */
+
+.create-item {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+	padding: 1rem;
+	background-color: var(--background-component);
+	border-radius: var(--border-radius);
+}
+
+.create-item__input {
+	background-color: var(--background-component-item);
+	border-radius: var(--border-radius);
+	width: 100%;
+	min-width: 170px;
+	max-width: 30%;
+	padding: .4rem 1rem;
+	outline: none;
+	color: #fff;
+	transition: opacity .3s;
+}
+
+.create-item__input::placeholder {
+	color: var(--color-text);
+}
+
+.create-item__button {
+	padding: .4rem 1rem;
+	cursor: pointer;
+	transition: opacity .3s;
+	background-color: var(--background-button);
+	border-radius: var(--border-radius);
+}
+
+/* List */
+
+.list-wrapper {
+	padding: 1rem;
+	background-color: var(--background-component);
+	border-radius: var(--border-radius);
+}
+
+.list-wrapper__title {
+	text-align: center;
+	font-size: 2rem;
+	margin-bottom: 2rem;
+	color: var(--color-text);
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--component-gap);
+}
+
+.list__item {
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.3rem;
+	color: var(--color-text);
+}
+
+.list__label {
+	display: flex;
+	align-items: center;
+	flex-grow: 1;
+	padding: 1rem;
+	transition: opacity .3s;
+	border-top-left-radius: var(--border-radius);
+	border-bottom-left-radius: var(--border-radius);
+	background-color: var(--background-component-item);
+}
+
+.list__input {
+	appearance: none;
+}
+
+.list__delete {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 1rem;
+	cursor: pointer;
+	transition:
+		opacity .3s,
+		background-color .3s;
+	background-color: var(--background-component-item);
+	border-top-right-radius: var(--border-radius);
+	border-bottom-right-radius: var(--border-radius);
+}
+
+/* Check */
+
+.check {
+	position: relative;
+	gap: 2rem;
+}
+
+.check__box {
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 1em;
+	height: 1em;
+	background-image: url(assets/default.svg);
+}
+
+.check__input {
+}
+
+.check__input:checked + .check__box {
+	background-image: url(assets/checked.svg);
+}
+
+.check__input:focus + .check__box {
+	background-image: url(assets/focused.svg);
+}
+
+.check__input:checked:focus + .check__box {
+	background-image: url(assets/checked-focused.svg);
+}
+
+.check__input:disabled + .check__box {
+	background-image: url(assets/disabled.svg);
+}
+
+.check__input:disabled:focus + .check__box {
+	background-image: url(assets/disabled-checked.svg);
+}
+
+/* Hover */
+
+.list__delete:hover {
+	background-color: var(--background-button);
+}
+
+.create-item__input:hover,
+.create-item__button:hover,
+.list__label:hover,
+.list__label:hover+.list__delete {
+	opacity: .7;
+}
