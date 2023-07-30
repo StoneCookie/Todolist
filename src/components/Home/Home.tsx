@@ -3,9 +3,9 @@ import AddTodoItem from "../AddTodoItem/AddTodoItem";
 import TodoList from "../TodoList/TodoList";
 
 export type TodosType = {
-	id: number,
-	title: string,
-	isDone: boolean,
+	id: number
+	title: string
+	isDone: boolean
 }
 
 if (localStorage.getItem('todos') === null) {
@@ -49,6 +49,17 @@ const Home = () => {
 		}
 	}
 
+	function changeTitleTodo(id: number, title: string) {
+		let todoItem = todos.find(todo => todo.id === id);
+		if (todoItem) {
+			const copy = [...todos]
+			todoItem.title = title;
+
+			setTodosStorage(copy);
+			setTodosState(copy);
+		}
+	}
+
 	console.log(todos);
 
 
@@ -58,7 +69,8 @@ const Home = () => {
 			<TodoList
 				todos={todos}
 				deleteTodoItem={deleteTodoItem}
-				changeStatusTodo={changeStatusTodo} />
+				changeStatusTodo={changeStatusTodo}
+				changeTitleTodo={changeTitleTodo} />
 		</Fragment>
 	);
 }

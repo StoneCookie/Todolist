@@ -1,13 +1,17 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, MouseEvent, useState } from "react";
 import type { TodosType } from "../Home/Home";
+import EditableSpan from "../EditableSpan/EditableSpan";
 
 type TodoItemType = {
 	todo: TodosType
 	deleteTodoItem: (id: number) => void
 	changeStatusTodo: (id: number, isDone: boolean) => void
+	changeTitleTodo: (id: number, newValue: string) => void
 }
 
 const TodoItem = (props: TodoItemType) => {
+	const [editMode, setEditMode] = useState(false);
+
 	function onDeleteItemHandler() {
 		props.deleteTodoItem(props.todo.id);
 	}
@@ -16,12 +20,30 @@ const TodoItem = (props: TodoItemType) => {
 		props.changeStatusTodo(props.todo.id, event.currentTarget.checked);
 	}
 
+	function onChangeTitleHandler(newValue: string) {
+		props.changeTitleTodo(props.todo.id, newValue);
+	}
+
+	function activateEditMode(event: MouseEvent<HTMLLabelElement>) {
+		if (event.button === 1) {
+			setEditMode(true);
+		}
+	}
+
+	function onChangeEditModeHandler() {
+		setEditMode(false);
+	}
+
 	return (
 		<li className="list__item">
-			<label className={`list__label check ${props.todo.isDone ? 'hidden' : ''}`}>
+			<label className={`list__label check ${props.todo.isDone ? 'hidden' : ''}`} onMouseDown={activateEditMode}>
 				<input className="list__input check__input" type="checkbox" checked={props.todo.isDone} onChange={onChangeCheckHandler} />
 				<span className="check__box"></span>
-				<span className="check__title">{props.todo.title}</span>
+				<EditableSpan
+					title={props.todo.title}
+					editMode={editMode}
+					onChangeTitle={onChangeTitleHandler}
+					onChangeEditMode={onChangeEditModeHandler} />
 			</label>
 			<button className="list__delete" onClick={onDeleteItemHandler}>
 				<svg height="24" width="24" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="var(--color-text)">

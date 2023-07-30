@@ -126,6 +126,14 @@ body {
 	appearance: none;
 }
 
+.list__edit-input {
+	outline: none;
+	padding: 0 1rem;
+	color: var(--color-text);
+	background-color: var(--background-app);
+	border-radius: var(--border-radius);
+}
+
 .list__delete {
 	display: flex;
 	justify-content: center;

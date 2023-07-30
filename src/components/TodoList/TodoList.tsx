@@ -5,6 +5,7 @@ type TodoListType = {
 	todos: Array<TodosType>
 	deleteTodoItem: (id: number) => void
 	changeStatusTodo: (id: number, isDone: boolean) => void
+	changeTitleTodo: (id: number, newValue: string) => void
 }
 
 const TodoList = (props: TodoListType) => {
@@ -17,11 +18,15 @@ const TodoList = (props: TodoListType) => {
 			) : (
 				<ul className="list">
 					{
-						props.todos.map(todo => <TodoItem
-							key={todo.id}
-							todo={todo}
-							deleteTodoItem={props.deleteTodoItem}
-							changeStatusTodo={props.changeStatusTodo} />)
+						props.todos.map(todo => {
+
+							return <TodoItem
+								key={todo.id}
+								todo={todo}
+								deleteTodoItem={props.deleteTodoItem}
+								changeStatusTodo={props.changeStatusTodo}
+								changeTitleTodo={props.changeTitleTodo} />
+						})
 					}
 				</ul>
 			)}
