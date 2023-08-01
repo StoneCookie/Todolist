@@ -37,7 +37,12 @@ const TodoItem = (props: TodoItemType) => {
 	return (
 		<li className="list__item">
 			<label className={`list__label check ${props.todo.isDone ? 'hidden' : ''}`} onMouseDown={activateEditMode}>
-				<input className="list__input check__input" type="checkbox" checked={props.todo.isDone} onChange={onChangeCheckHandler} />
+				<input
+					className="list__input check__input"
+					type="checkbox"
+					checked={props.todo.isDone}
+					disabled={editMode}
+					onChange={onChangeCheckHandler} />
 				<span className="check__box"></span>
 				<EditableSpan
 					title={props.todo.title}

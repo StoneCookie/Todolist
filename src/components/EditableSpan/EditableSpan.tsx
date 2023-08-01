@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useState } from "react";
 
 type EditableSpanType = {
 	title: string
@@ -19,14 +19,21 @@ const EditableSpan = (props: EditableSpanType) => {
 		title ? props.onChangeTitle(title) : alert('Значение не может быть пустым');
 	}
 
+	function onKeyDownHandler(event: KeyboardEvent<HTMLInputElement>) {
+		if (event.key === 'Enter') {
+			activateViewMode();
+		}
+	}
+
 	return (
 		props.editMode ? (
 			<input
-			className="list__edit-input"
-			type="text"
-			value={title}
-			onInput={onChangeTitleHandler}
-			onBlur={activateViewMode}
+				className="list__edit-input"
+				type="text"
+				value={title}
+				onKeyDown={onKeyDownHandler}
+				onInput={onChangeTitleHandler}
+				onBlur={activateViewMode}
 			/>
 		) : (
 			<span className="check__title">{props.title}</span>
