@@ -224,7 +224,7 @@ body {
 	background-image: url(assets/disabled.svg);
 }
 
-.check__input:disabled:focus+.check__box {
+.check__input:disabled:checked+.check__box {
 	background-image: url(assets/disabled-checked.svg);
 }
 
